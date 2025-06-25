@@ -1,1 +1,19 @@
-/myvenv
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+myvenv/
+.env/
+.venv/
+
+# Django stuff:
+*.log
+db.sqlite3
+.env
+
+# VSCode or PyCharm settings (optional)
+.vscode/
+.idea/
