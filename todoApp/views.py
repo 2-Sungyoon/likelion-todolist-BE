@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ParseError, NotFound
 from .models import Todo, User
 from .serializers import TodoSerializer
+from rest_framework import status
 
 # Create your views here.
 class Todos(APIView):
@@ -22,7 +23,7 @@ class Todos(APIView):
         user = self.get_user(user_id)
 
         #기본적으로 전체 todo 리스트 조회
-        todos = Todo.objects.filter(user=user)
+        todos = Todo.objects.filter(user=user)   #   .order_by(sort_by)
 
         # 쿼리 파라미터에서 month, day 가져오기
         month = request.query_params.get("month")
@@ -46,3 +47,124 @@ class Todos(APIView):
         # 보낼 데이터들 직렬화
         serializer = TodoSerializer(todos, many=True)   
         return Response(serializer.data)
+    
+    #투두작성 추가 - post
+    def post(self, request, user_id):
+        user = self.get_user(user_id)
+
+        # date와 content를 요청에서 추출
+        date = request.data.get('date')
+        content = request.data.get('content')
+
+        # 둘 중 하나라도 빠지면 400 에러
+        if not date or not content:
+            raise ParseError("date와 content는 필수 입력 항목입니다.")
+
+        # 새로운 Todo 객체 생성 및 저장
+        todo = Todo.objects.create(
+            user=user,
+            date=date,
+            content=content
+        )
+
+        # 직렬화 및 반환
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+# 투두수정 추가 - 엔드포인트가 달라지므로 new class 추가
+class TodoDetail(APIView):
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            raise NotFound("유저를 찾을 수 없습니다.")
+
+    def get_todo(self, user, todo_id):
+        try:
+            return Todo.objects.get(id=todo_id, user=user)
+        except Todo.DoesNotExist:
+            raise NotFound("To Do를 찾을 수 없습니다.")
+
+    def patch(self, request, user_id, todo_id):
+        user = self.get_user(user_id)
+        todo = self.get_todo(user, todo_id)
+
+        date = request.data.get('date')
+        content = request.data.get('content')
+
+        if date:
+            todo.date = date
+        if content:
+            todo.content = content
+
+        todo.save()
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    #투두삭제 추가
+    def delete(self, request, user_id, todo_id):
+        user = self.get_user(user_id)
+        todo = self.get_todo(user, todo_id)
+
+        todo.delete()
+        return Response({"detail": "삭제 성공"}, status=status.HTTP_204_NO_CONTENT)
+    
+#투두완료 - check class 추가
+class TodoCheck(APIView):
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            raise NotFound("유저를 찾을 수 없습니다.")
+
+    def get_todo(self, user, todo_id):
+        try:
+            return Todo.objects.get(id=todo_id, user=user)
+        except Todo.DoesNotExist:
+            raise NotFound("To Do를 찾을 수 없습니다.")
+
+    def patch(self, request, user_id, todo_id):
+        user = self.get_user(user_id)
+        todo = self.get_todo(user, todo_id)
+
+        is_checked = request.data.get('is_checked')
+
+        if is_checked is None:
+            raise ParseError("is_checked 값을 입력해 주세요.")
+
+        if not isinstance(is_checked, bool):
+            raise ParseError("is_checked는 true 또는 false여야 합니다.")
+
+        todo.is_checked = is_checked
+        todo.save()
+
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+#투두리뷰 -review class 추가
+class TodoReview(APIView):
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            raise NotFound("유저를 찾을 수 없습니다.")
+
+    def get_todo(self, user, todo_id):
+        try:
+            return Todo.objects.get(id=todo_id, user=user)
+        except Todo.DoesNotExist:
+            raise NotFound("To Do를 찾을 수 없습니다.")
+
+    def patch(self, request, user_id, todo_id):
+        user = self.get_user(user_id)
+        todo = self.get_todo(user, todo_id)
+
+        emoji = request.data.get('emoji')
+        if not emoji:
+            raise ParseError("emoji 값을 입력해 주세요.")
+
+        todo.emoji = emoji
+        todo.save()
+
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data, status=status.HTTP_200_OK)

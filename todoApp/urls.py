@@ -19,5 +19,10 @@ from . import views
 
 urlpatterns = [
     path('<int:user_id>/', views.Todos.as_view()),
+    path('<int:user_id>/<int:todo_id>/', views.TodoDetail.as_view()),
+    path('<int:user_id>/<int:todo_id>/check/', views.TodoCheck.as_view()),
+    path('<int:user_id>/<int:todo_id>/reviews/', views.TodoReview.as_view()),
     #? 뒤에 qeurt string 부분은 url에 표시 x
 ]
+
+
