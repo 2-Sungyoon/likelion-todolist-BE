@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     path('register/', views.Register.as_view()),
+    path('login/', views.Login.as_view()), # 없어서 임의로 내가 추가해놓음
 ]
