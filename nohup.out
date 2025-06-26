@@ -1,0 +1,222 @@
+Watching for file changes with StatReloader
+Traceback (most recent call last):
+  File "/srv/likelion-todolist-BE/manage.py", line 11, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/likelion-todolist-BE/manage.py", line 22, in <module>
+    main()
+  File "/srv/likelion-todolist-BE/manage.py", line 13, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 124, in inner_run
+    autoreload.raise_last_exception()
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/utils/autoreload.py", line 86, in raise_last_exception
+    raise _exception[1]
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'corsheaders'
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '3.39.230.162:80'. You may need to add '3.39.230.162' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '3.39.230.162:80'. You may need to add '3.39.230.162' to ALLOWED_HOSTS.
+[26/Jun/2025 06:48:06] "GET /cgi-bin/luci/;stok=/locale HTTP/1.1" 400 63598
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/srv/likelion-todolist-BE/todolistProject/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2025 - 06:51:32
+Django version 5.2.3, using settings 'todolistProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+/srv/likelion-todolist-BE/todolistProject/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 26, 2025 - 06:54:44
+Django version 5.2.3, using settings 'todolistProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /
+[26/Jun/2025 06:56:49] "POST / HTTP/1.1" 404 2471
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+[26/Jun/2025 06:56:50] "GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 404 2638
+Not Found: /.env
+[26/Jun/2025 06:56:50] "GET /.env HTTP/1.1" 404 2500
+Not Found: /.env.bak
+[26/Jun/2025 06:56:51] "GET /.env.bak HTTP/1.1" 404 2512
+Not Found: /app/config/.env
+[26/Jun/2025 06:56:51] "GET /app/config/.env HTTP/1.1" 404 2533
+Not Found: /staging/.env
+[26/Jun/2025 06:56:52] "GET /staging/.env HTTP/1.1" 404 2524
+Not Found: /admin-app/.env
+[26/Jun/2025 06:56:52] "GET /admin-app/.env HTTP/1.1" 404 2530
+Not Found: /api/.env
+[26/Jun/2025 06:56:53] "GET /api/.env HTTP/1.1" 404 2512
+Not Found: /app/.env
+[26/Jun/2025 06:56:53] "GET /app/.env HTTP/1.1" 404 2512
+Not Found: /apps/.env
+[26/Jun/2025 06:56:54] "GET /apps/.env HTTP/1.1" 404 2515
+Not Found: /back/.env
+[26/Jun/2025 06:56:54] "GET /back/.env HTTP/1.1" 404 2515
+Not Found: /core/.env
+[26/Jun/2025 06:56:55] "GET /core/.env HTTP/1.1" 404 2515
+Not Found: /cp/.env
+[26/Jun/2025 06:56:55] "GET /cp/.env HTTP/1.1" 404 2509
+Not Found: /development/.env
+[26/Jun/2025 06:56:56] "GET /development/.env HTTP/1.1" 404 2536
+Not Found: /docker/.env
+[26/Jun/2025 06:56:56] "GET /docker/.env HTTP/1.1" 404 2521
+Not Found: /fedex/.env
+[26/Jun/2025 06:56:57] "GET /fedex/.env HTTP/1.1" 404 2518
+Not Found: /local/.env
+[26/Jun/2025 06:56:57] "GET /local/.env HTTP/1.1" 404 2518
+Not Found: /private/.env
+[26/Jun/2025 06:56:58] "GET /private/.env HTTP/1.1" 404 2524
+Not Found: /rest/.env
+[26/Jun/2025 06:56:58] "GET /rest/.env HTTP/1.1" 404 2515
+Not Found: /shared/.env
+[26/Jun/2025 06:56:59] "GET /shared/.env HTTP/1.1" 404 2521
+Not Found: /sources/.env
+[26/Jun/2025 06:56:59] "GET /sources/.env HTTP/1.1" 404 2524
+Not Found: /system/.env
+[26/Jun/2025 06:57:00] "GET /system/.env HTTP/1.1" 404 2521
+Not Found: /wp-config.php~
+[26/Jun/2025 06:57:00] "GET /wp-config.php~ HTTP/1.1" 404 2530
+Not Found: /wp-config.inc
+[26/Jun/2025 06:57:01] "GET /wp-config.inc HTTP/1.1" 404 2527
+Not Found: /wp-config.old
+[26/Jun/2025 06:57:01] "GET /wp-config.old HTTP/1.1" 404 2527
+Not Found: /wp-config.php.bak
+[26/Jun/2025 06:57:02] "GET /wp-config.php.bak HTTP/1.1" 404 2539
+Not Found: /wp-config.php.dist
+[26/Jun/2025 06:57:02] "GET /wp-config.php.dist HTTP/1.1" 404 2542
+Not Found: /wp-config.php.inc
+[26/Jun/2025 06:57:03] "GET /wp-config.php.inc HTTP/1.1" 404 2539
+Not Found: /wp-config.php.old
+[26/Jun/2025 06:57:03] "GET /wp-config.php.old HTTP/1.1" 404 2539
+Not Found: /wp-config.php.txt
+[26/Jun/2025 06:57:04] "GET /wp-config.php.txt HTTP/1.1" 404 2539
+Not Found: /wp-config.txt
+[26/Jun/2025 06:57:04] "GET /wp-config.txt HTTP/1.1" 404 2527
+Not Found: /phpinfo.php
+[26/Jun/2025 06:57:05] "GET /phpinfo.php HTTP/1.1" 404 2521
+Not Found: /php.php
+[26/Jun/2025 06:57:05] "GET /php.php HTTP/1.1" 404 2509
+Not Found: /info.php
+[26/Jun/2025 06:57:06] "GET /info.php HTTP/1.1" 404 2512
+Not Found: /info
+[26/Jun/2025 06:57:06] "GET /info HTTP/1.1" 404 2500
+Not Found: /_profiler/phpinfo
+[26/Jun/2025 06:57:07] "GET /_profiler/phpinfo HTTP/1.1" 404 2539
+[26/Jun/2025 07:00:14] code 400, message Bad request version ('À\x13À')
+[26/Jun/2025 07:00:14] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[26/Jun/2025 07:00:15] "GET / HTTP/1.1" 404 2470
+Invalid HTTP_HOST header: 'ip-172-31-41-84.ap-northeast-2.compute.internal:8000'. You may need to add 'ip-172-31-41-84.ap-northeast-2.compute.internal' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/srv/likelion-todolist-BE/myvenv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'ip-172-31-41-84.ap-northeast-2.compute.internal:8000'. You may need to add 'ip-172-31-41-84.ap-northeast-2.compute.internal' to ALLOWED_HOSTS.
+[26/Jun/2025 07:01:17] "GET /boaform/admin/formLogin?username=adminisp&psd=adminisp HTTP/1.0" 400 64637
+Not Found: /
+[26/Jun/2025 07:11:25] "GET / HTTP/1.1" 404 2470
+[26/Jun/2025 07:11:36] code 505, message Invalid HTTP version (2.0)
+[26/Jun/2025 07:11:36] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[26/Jun/2025 07:11:40] "GET /favicon.ico HTTP/1.1" 404 2521
+[26/Jun/2025 07:11:40] code 505, message Invalid HTTP version (2.0)
+[26/Jun/2025 07:11:40] "PRI * HTTP/2.0" 505 -
+[26/Jun/2025 07:11:45] code 400, message Bad request version ('À\x14À')
+[26/Jun/2025 07:11:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /security.txt
+[26/Jun/2025 07:11:46] "GET /security.txt HTTP/1.1" 404 2524
+Not Found: /.env
+[26/Jun/2025 07:18:33] "GET /.env HTTP/1.1" 404 2500
+[26/Jun/2025 07:18:33,995] - Broken pipe from ('45.83.220.212', 56754)
+Not Found: /
+[26/Jun/2025 08:00:53] "GET / HTTP/1.1" 404 2470
+Not Found: /
+[26/Jun/2025 08:30:48] "GET / HTTP/1.1" 404 2470
+Not Found: /
+[26/Jun/2025 08:56:22] "GET / HTTP/1.1" 404 2470
+[26/Jun/2025 08:56:26] code 505, message Invalid HTTP version (2.0)
+[26/Jun/2025 08:56:26] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[26/Jun/2025 08:56:31] "GET /favicon.ico HTTP/1.1" 404 2521
+[26/Jun/2025 08:56:31] code 505, message Invalid HTTP version (2.0)
+[26/Jun/2025 08:56:31] "PRI * HTTP/2.0" 505 -
+Not Found: /
+[26/Jun/2025 08:56:31] "GET / HTTP/1.1" 404 2470
+[26/Jun/2025 08:56:35] code 400, message Bad request version ('À\x14À')
+[26/Jun/2025 08:56:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /sitemap.xml
+[26/Jun/2025 08:56:35] "GET /sitemap.xml HTTP/1.1" 404 2521
+Not Found: /
+[26/Jun/2025 09:09:30] "GET / HTTP/1.1" 404 2473
+[26/Jun/2025 09:09:31,196] - Broken pipe from ('87.121.84.196', 51506)
+[26/Jun/2025 09:15:52] code 400, message Bad request syntax ('\x16\x03\x01\x00\x8a\x01\x00\x00\x86\x03\x03ÄDÎø\x91hiN\x0fz')
+[26/Jun/2025 09:15:52] You're accessing the development server over HTTPS, but it only supports HTTP.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Error: That port is already in use.
+Watching for file changes with StatReloader
+Error: That port is already in use.
