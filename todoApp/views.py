@@ -4,6 +4,7 @@ from rest_framework.exceptions import ParseError, NotFound
 from .models import Todo, User
 from .serializers import TodoSerializer
 from rest_framework import status
+from datetime import datetime, timedelta
 
 # Create your views here.
 class Todos(APIView):
@@ -168,3 +169,51 @@ class TodoReview(APIView):
 
         serializer = TodoSerializer(todo)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+#반복일정 등록
+class RecurringTodoCreate(APIView):
+    def post(self, request, user_id):
+        title = request.data.get('title')
+        day_of_week = request.data.get('day_of_week')  # 예: "Tuesday"
+        weeks = int(request.data.get('weeks', 4))  # 몇 주 반복할지 (기본 4주)
+        start_date_str = request.data.get('start_date')  # 시작 날짜 (예: '2025-07-02')
+
+        if not all([title, day_of_week, start_date_str]):
+            return Response({"error": "title, day_of_week, start_date를 모두 입력하세요."}, status=400)
+
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+        day_index = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].index(day_of_week)
+
+        created = []
+        for i in range(weeks):
+            next_date = start_date + timedelta(weeks=i)
+            while next_date.weekday() != day_index:
+                next_date += timedelta(days=1)
+
+            todo = Todo.objects.create(
+                user_id=user_id,
+                title=title,
+                due_date=next_date,
+                is_completed=False
+            )
+            created.append(todo.id)
+
+        return Response({"message": f"{len(created)}개의 반복 일정이 생성되었습니다.", "ids": created}, status=201)
+
+
+#투두 순서 변경 (드래그 앤 드롭)
+class TodoReorder(APIView):
+    def patch(self, request, user_id):
+        new_order = request.data.get('order')  # 예: [3, 1, 2]
+        if not isinstance(new_order, list):
+            return Response({"error": "order는 리스트 형태여야 합니다."}, status=400)
+
+        for idx, todo_id in enumerate(new_order):
+            try:
+                todo = Todo.objects.get(id=todo_id, user_id=user_id)
+                todo.order = idx
+                todo.save()
+            except Todo.DoesNotExist:
+                return Response({"error": f"ID {todo_id}에 해당하는 투두가 없습니다."}, status=404)
+
+        return Response({"message": "순서가 성공적으로 변경되었습니다."}, status=200)
